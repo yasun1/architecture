@@ -250,6 +250,46 @@ These sections work together to provide full context for architectural decisions
 
 ---
 
+## Pre-commit Hooks
+
+This repository uses [pre-commit](https://pre-commit.io/) for code quality and security checks on documentation.
+
+### Setup
+
+```bash
+# Install pre-commit
+brew install pre-commit  # macOS
+# or
+pip install pre-commit
+
+# Install hooks
+pre-commit install
+pre-commit install --hook-type pre-push
+
+# Test
+pre-commit run --all-files
+```
+
+### For External Contributors
+
+The `.pre-commit-config.yaml` includes `rh-pre-commit` which requires access to Red Hat's internal GitLab. External contributors can skip it:
+
+```bash
+# Skip internal hook when committing
+SKIP=rh-pre-commit git commit -m "your message"
+```
+
+Or comment out the internal hook in `.pre-commit-config.yaml`.
+
+### Update Hooks
+
+```bash
+pre-commit autoupdate
+pre-commit run --all-files
+```
+
+---
+
 ## Living Documents
 
 All documents in this repository are **living documents**:
